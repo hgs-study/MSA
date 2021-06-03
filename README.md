@@ -1,5 +1,3 @@
-## MSA
-
 ### MSA란?
 ---
 + [Microservice-Architecture](https://github.com/hgs-study/DailyStudy/blob/main/Architecture/Microservice.md)

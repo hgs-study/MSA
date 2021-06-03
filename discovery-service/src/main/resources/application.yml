@@ -1,0 +1,15 @@
+server:
+  port: 8761
+
+#고유한 Id 등록
+spring:
+  application:
+    name: discoveryservice
+
+# 유레카 라이브러리가  포함된채 스프링 부트가 기동이 되면
+# 기본적으로 유레카 클라이언트로 등록하려는 작업이 실행된다.
+# -> 유레카 서버 역할은 하되 다른 MS에서 유레카 서버와 데이터를 주고 받지 않아도 되기 때문에 false
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

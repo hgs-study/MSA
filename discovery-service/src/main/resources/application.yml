@@ -4,7 +4,7 @@ server:
 #고유한 Id 등록
 spring:
   application:
-    name: discoveryservice
+    name: discovery-service
 
 # 유레카 라이브러리가  포함된채 스프링 부트가 기동이 되면
 # 기본적으로 유레카 클라이언트로 등록하려는 작업이 실행된다.

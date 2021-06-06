@@ -8,6 +8,8 @@
 
  + [API-Gateway](https://github.com/hgs-study/DailyStudy/blob/main/MSA/API-Gateway.md)
 
+ + [SpringCloud-Gateway](https://github.com/hgs-study/DailyStudy/blob/main/MSA/SpringCloud-Gateway.md)
+
 
 ### Spring Cloud
 ------

@@ -11,14 +11,16 @@ eureka:
 spring:
   application:
     name: apigateway-service
-  cloud:
-    gateway:
-      routes:
-        - id: first-service
-          uri: http://localhost:8081/
-          predicates: # 조건절
-            - Path=/first-service/**   # http://localhost:8081/first-service/** uri 뒤에 붙어서 매핑됨
-        - id: second-service
-          uri: http://localhost:8082/
-          predicates: # 조건절
-            - Path=/second-service/**
+
+# 자바코드로 작업하기 위해 주석
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: first-service
+#          uri: http://localhost:8081/
+#          predicates: # 조건절
+#            - Path=/first-service/**   # http://localhost:8081/first-service/** uri 뒤에 붙어서 매핑됨
+#        - id: second-service
+#          uri: http://localhost:8082/
+#          predicates: # 조건절
+#            - Path=/second-service/**

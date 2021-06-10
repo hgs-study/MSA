@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 0
 
 spring:
   application:
@@ -11,5 +11,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
-
+  # server.port : 0이 랜덤포트가 맞지만 여러번 실행시켜도 eureka엔 하나만 잡혀서 아래와 같이 사용
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance.id:${random.value}}
 

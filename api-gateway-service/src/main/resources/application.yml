@@ -19,12 +19,14 @@ spring:
           predicates: # 조건절
             - Path=/first-service/**   # http://localhost:8081/first-service/** uri 뒤에 붙어서 매핑됨
           filters:
-            - AddRequestHeader=first-request, first-request-header2 # key , value
-            - AddResponseHeader=first-response, first-response-header2
+            #- AddRequestHeader=first-request, first-request-header2 # key , value
+            #- AddResponseHeader=first-response, first-response-header2
+            - CustomFilter
         - id: second-service
           uri: http://localhost:8082/
           predicates: # 조건절
             - Path=/second-service/**
           filters:
-            - AddRequestHeader=second-request, second-request-header2
-            - AddResponseHeader=second-response, second-response-header2
+            #- AddRequestHeader=second-request, second-request-header2
+            #- AddResponseHeader=second-response, second-response-header2
+            - CustomFilter

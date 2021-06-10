@@ -22,5 +22,12 @@ public class ZuulSecondController {
         log.info(header);
         return "Hello World in Second Serivce";
     }
+
+
+    @GetMapping("/check")
+    public String check(){
+        return "Hi, there. This is a message from Second Service.";
+    }
+
 }
 

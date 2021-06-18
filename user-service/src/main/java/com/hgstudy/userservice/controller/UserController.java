@@ -20,24 +20,24 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
 
-//    private Environment env;
+    private Environment env;
+    private UserService userService;
 
-//    @Autowired
-    private final Greeting greeting;
+    @Autowired
+    private Greeting greeting;
 
-    private final UserService userService;
-
-//    @Autowired
-//    public UserController(Environment env) {
-//        this.env = env;
-//    }
-
-    @GetMapping("/health_check")
-    public String status(){
-        return "It's Working in User Service";
+    @Autowired
+    public UserController(Environment env,UserService userService) {
+        this.env = env;
+        this.userService = userService;
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/user-service/health_check")
+    public String status(){
+        return String.format("It's Working in User Service on Port %s", env.getProperty("local.server.port"));
+    }
+
+    @GetMapping("/user-service/welcome")
     public String welcome(){
 //        return env.getProperty("greeting.message");
         return greeting.getMessage();

@@ -1,4 +1,4 @@
-package com.hgstudy.catalogservice.dto;
+package com.hgstudy.orderservice.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class CatalogDto implements Serializable {
+public class OrderDto implements Serializable {
 
     private String productId;
     private Integer qty;

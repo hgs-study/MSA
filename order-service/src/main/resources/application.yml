@@ -1,0 +1,36 @@
+server:
+  port: 0 # port : 0 랜던포트 활용
+
+spring:
+  application:
+    name: order-service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true  #외부 접속 허용
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    show-sql: true
+#    generate-ddl: true
+    defer-datasource-initialization: true #data.sql 사용
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true # 유레카에 항목 등록
+    fetch-registry: true # 검색 가능한 항목
+    service-url: # 서비스 위치
+      defaultZone: http://127.0.0.1:8761/eureka # localhost를 사용해도 되지만 실제 ip인 127.0.0.1 사용 / 8761 : 디스커버리
+
+logging:
+  level:
+    com.hgstudy.orderservice: debug

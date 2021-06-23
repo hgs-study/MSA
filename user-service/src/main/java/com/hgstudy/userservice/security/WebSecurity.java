@@ -29,8 +29,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     //권한 관련
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
         //http.authorizeRequests().antMatchers("/user/**").permitAll();
+        http.csrf().disable();
+
         http.authorizeRequests().antMatchers("/**")
                                 .hasIpAddress("127.0.0.1") //해당 ip만 통과
                                 .and()

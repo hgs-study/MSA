@@ -31,7 +31,7 @@ spring:
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie # 전달되는 데이터를 매번 새롭게 인식하기 위해서 삭제
-            - RewritePath=/user-service/(?<segment>.*),/$\{segment} # /user-service/(?<segment>.*) 요청한 uri를 {segment} 변경
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment} # /user-service/(?<segment>.*) 요청한 uri를 {segment} 변경
         - id: user-service
           uri: lb://USER-SERVICE
           predicates: # 조건절
@@ -39,7 +39,7 @@ spring:
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates: # 조건절
@@ -47,7 +47,7 @@ spring:
             - Method=GET
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates: # 조건절

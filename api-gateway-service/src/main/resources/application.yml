@@ -20,10 +20,34 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates: # 조건절
+#            - Path=/user-service/**
         - id: user-service
           uri: lb://USER-SERVICE
           predicates: # 조건절
-            - Path=/user-service/**
+            - Path=/user-service/login #로그인
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie # 전달되는 데이터를 매번 새롭게 인식하기 위해서 삭제
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment} # /user-service/(?<segment>.*) 요청한 uri를 {segment} 변경
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates: # 조건절
+            - Path=/user-service/users #회원가입
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates: # 조건절
+            - Path=/user-service/** #welcome, health_check 등등
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates: # 조건절

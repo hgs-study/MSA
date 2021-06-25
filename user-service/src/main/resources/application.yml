@@ -29,3 +29,7 @@ eureka:
 
 greeting:
   message: Welcome to the Simple E-commerce
+
+logging:
+  level:
+    com.hgstudy.userservice : debug

@@ -68,6 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    //  "/login"시 2번째로 탐
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity =userRepository.findByEmail(username);

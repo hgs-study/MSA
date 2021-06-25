@@ -2,6 +2,7 @@ package com.hgstudy.userservice.security;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hgstudy.userservice.dto.UserDto;
 import com.hgstudy.userservice.service.UserService;
 import com.hgstudy.userservice.vo.RequestLogin;
 import lombok.extern.slf4j.Slf4j;
@@ -22,14 +23,16 @@ import java.util.ArrayList;
 
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-//    private UserService userService;
-//    private Environment env;
-//
-//    public AuthenticationFilter(AuthenticationManager authenticationManager, UserService userService, Environment env) {
-//        super(authenticationManager);
-//        this.userService = userService;
-//        this.env = env;
-//    }
+    private UserService userService;
+    private Environment env;
+
+    public AuthenticationFilter(AuthenticationManager authenticationManager,
+                                UserService userService,
+                                Environment env) {
+        super.setAuthenticationManager(authenticationManager);
+        this.userService = userService;
+        this.env = env;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
@@ -62,6 +65,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             Authentication authResult) throws IOException, ServletException {
         //log.debug(((User)authResult.getPrincipal()).getUsername());
         String userName = ((User)authResult.getPrincipal()).getUsername();
+        UserDto userDetails = userService.getUserDetailsByEmail(userName);
     }
 
 

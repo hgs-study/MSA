@@ -33,3 +33,7 @@ greeting:
 logging:
   level:
     com.hgstudy.userservice : debug
+
+token:
+  expiration_time: 86400000 #하루기준(밀리세컨 x1000)
+  secret: user_token
